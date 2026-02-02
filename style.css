@@ -167,8 +167,10 @@ body {
     position: absolute;
     top: 20px;
     right: -40px;
+    width: 150px;
     padding: 8px 10px;
     transform: rotate(45deg);
+    transform-origin: center;
     font-size: 11px;
     font-weight: bold;
     color: white;
@@ -176,15 +178,18 @@ body {
     text-align: center;
     letter-spacing: 0.5px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
 }
 
 .etiqueta-vendido {
-    background: linear-gradient(135deg, #FF5722, #E64A19);
+    background: linear-gradient(45deg, #FF5722, #E64A19);
+    background: linear-gradient(135deg, #FF5722 0%, #E64A19 100%);
     border: 1px solid #D84315;
 }
 
 .etiqueta-economico {
-    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    background: linear-gradient(45deg, #4CAF50, #388E3C);
+    background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
     border: 1px solid #2E7D32;
 }
 
