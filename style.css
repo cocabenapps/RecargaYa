@@ -162,25 +162,30 @@ body {
     box-shadow: 0 15px 40px rgba(38, 208, 206, 0.15);
 }
 
-/* Etiquetas en ofertas */
+/* ===== ETIQUETAS CORREGIDAS ===== */
 .etiqueta {
     position: absolute;
     top: 15px;
-    right: -30px;
-    padding: 5px 40px;
+    right: -35px;
+    padding: 8px 40px;
     transform: rotate(45deg);
     font-size: 12px;
     font-weight: bold;
     color: white;
     z-index: 10;
+    text-align: center;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
 .etiqueta-vendido {
-    background: #FF5722;
+    background: linear-gradient(135deg, #FF5722, #E64A19);
+    border: 1px solid #D84315;
 }
 
 .etiqueta-economico {
-    background: #4CAF50;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    border: 1px solid #2E7D32;
 }
 
 .oferta h3 {
@@ -344,6 +349,7 @@ body {
     line-height: 1.6;
 }
 
+/* ===== TESTIMONIOS CORREGIDOS ===== */
 .testimonio-autor {
     display: flex;
     align-items: center;
@@ -352,6 +358,7 @@ body {
     font-weight: 600;
     color: #1a2980;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .testimonio-autor i.fa-user-circle {
@@ -361,6 +368,13 @@ body {
 
 .estrellas {
     color: #FFD700;
+    display: flex;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.estrellas i {
+    font-size: 14px;
 }
 
 .estrellas .far.fa-star {
@@ -409,33 +423,35 @@ body {
     resize: vertical;
 }
 
+/* ===== CALIFICACIÓN CORREGIDA ===== */
 .calificacion-resena {
     display: flex;
     align-items: center;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
     margin: 10px 0;
-}
-
-.calificacion-resena span {
-    font-weight: 600;
-    color: #1a2980;
+    width: 100%;
 }
 
 .estrellas-calificacion {
     display: flex;
-    gap: 5px;
+    gap: 3px;
+    flex-wrap: nowrap;
 }
 
 .estrellas-calificacion i {
-    font-size: 24px;
+    font-size: 20px;
     color: #ddd;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    min-width: 20px;
+    text-align: center;
 }
 
 .estrellas-calificacion i:hover,
 .estrellas-calificacion i.active {
     color: #FFD700;
+    transform: scale(1.1);
 }
 
 .btn-publicar {
@@ -693,7 +709,7 @@ body {
     scroll-margin-top: 100px;
 }
 
-/* Responsive */
+/* ===== RESPONSIVE CORREGIDO ===== */
 @media (max-width: 768px) {
     body {
         padding-top: 70px;
@@ -751,9 +767,21 @@ body {
         grid-template-columns: 1fr;
     }
     
+    /* Etiquetas en móvil */
     .etiqueta {
         font-size: 10px;
-        padding: 4px 30px;
+        padding: 6px 30px;
         right: -25px;
+    }
+    
+    /* Calificación en móvil */
+    .calificacion-resena {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .estrellas-calificacion i {
+        font-size: 18px;
     }
 }
