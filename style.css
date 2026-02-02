@@ -774,9 +774,11 @@ body {
     
     /* Etiquetas en móvil */
     .etiqueta {
-        font-size: 10px;
-        padding: 6px 8px;
+        top: 15px;
         right: -35px;
+        width: 130px;
+        padding: 6px 8px;
+        font-size: 10px;
     }
     
     /* Calificación en móvil */
