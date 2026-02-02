@@ -166,10 +166,10 @@ body {
 .etiqueta {
     position: absolute;
     top: 20px;
-    right: -40px;
+    right: -70px;
     width: 150px;
     padding: 8px 10px;
-    transform: rotate(10deg);
+    transform: rotate(45deg);
     transform-origin: center;
     font-size: 11px;
     font-weight: bold;
