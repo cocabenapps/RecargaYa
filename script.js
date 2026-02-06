@@ -7,6 +7,63 @@ let ofertaActual = null;
 let precioActual = null;
 let codigoOfertaActual = null;
 
+// Función para verificar horario y actualizar indicador
+function actualizarIndicadorHorario() {
+    const ahora = new Date();
+    const horaActual = ahora.getHours();
+    const minutosActual = ahora.getMinutes();
+    const horaActualDecimal = horaActual + (minutosActual / 60);
+    
+    // Horario: 9:00 AM - 9:00 PM (21:00)
+    const horaApertura = 9;   // 9:00 AM
+    const horaCierre = 21;    // 9:00 PM
+    
+    const indicador = document.getElementById('horario-indicador');
+    const texto = document.getElementById('horario-texto');
+    
+    if (!indicador || !texto) return;
+    
+    if (horaActualDecimal >= horaApertura && horaActualDecimal < horaCierre) {
+        // Está abierto
+        indicador.className = 'horario-indicador abierto';
+        texto.textContent = 'Abierto ahora';
+        
+        // Mostrar hora de cierre
+        const horasRestantes = Math.floor(horaCierre - horaActualDecimal);
+        const minutosRestantes = Math.round((horaCierre - horaActualDecimal - horasRestantes) * 60);
+        
+        if (horasRestantes > 0) {
+            texto.textContent = `Abierto • Cierra en ${horasRestantes}h`;
+        } else if (minutosRestantes > 0) {
+            texto.textContent = `Abierto • Cierra en ${minutosRestantes}min`;
+        }
+    } else {
+        // Está cerrado
+        indicador.className = 'horario-indicador cerrado';
+        texto.textContent = 'Cerrado ahora';
+        
+        // Calcular cuánto falta para abrir
+        let horasParaAbrir;
+        
+        if (horaActualDecimal < horaApertura) {
+            // Todavía no ha abierto hoy
+            horasParaAbrir = horaApertura - horaActualDecimal;
+        } else {
+            // Ya cerró, abrirá mañana
+            horasParaAbrir = (24 - horaActualDecimal) + horaApertura;
+        }
+        
+        const horas = Math.floor(horasParaAbrir);
+        const minutos = Math.round((horasParaAbrir - horas) * 60);
+        
+        if (horas > 0) {
+            texto.textContent = `Cerrado • Abre en ${horas}h`;
+        } else if (minutos > 0) {
+            texto.textContent = `Cerrado • Abre en ${minutos}min`;
+        }
+    }
+}
+
 // Función mejorada para comprar ofertas (SIN EMOJIS)
 function comprarOferta(nombreOferta, precio, codigoOferta) {
     // Crear mensaje sin emojis, solo con puntos/plecas
