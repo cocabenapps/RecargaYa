@@ -54,6 +54,51 @@ body {
     font-weight: 700;
 }
 
+.nav-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Indicador de horario */
+.horario-indicador {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.horario-indicador.abierto {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: rgba(76, 175, 80, 0.4);
+    color: #a5d6a7;
+}
+
+.horario-indicador.cerrado {
+    background: rgba(244, 67, 54, 0.2);
+    border-color: rgba(244, 67, 54, 0.4);
+    color: #ffabab;
+}
+
+.horario-indicador i {
+    font-size: 14px;
+}
+
+.horario-indicador.abierto i {
+    color: #4CAF50;
+}
+
+.horario-indicador.cerrado i {
+    color: #f44336;
+}
+
+/* Ajustar nav-menu para el nuevo layout */
 .nav-menu {
     display: flex;
     gap: 25px;
