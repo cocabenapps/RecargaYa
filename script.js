@@ -230,7 +230,13 @@ function mostrarConfirmacionPagoRealizado(banco) {
 
 // Scroll suave para el menú de navegación
 document.addEventListener('DOMContentLoaded', function() {
-    // Configurar scroll suave para enlaces del menú
+// Actualizar indicador de horario
+actualizarIndicadorHorario();
+
+// Actualizar cada minuto
+setInterval(actualizarIndicadorHorario, 60000); // Actualizar cada minuto   
+
+ // Configurar scroll suave para enlaces del menú
     const navLinks = document.querySelectorAll('.nav-link');
 
     navLinks.forEach(link => {
