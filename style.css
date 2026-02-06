@@ -98,6 +98,16 @@ body {
     100% { transform: scale(1); }
 }
 
+@keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(-50px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 /* Header con logo */
 .header-brand {
     background: linear-gradient(90deg, #1a2980, #26d0ce);
@@ -166,11 +176,11 @@ body {
 .etiqueta {
     position: absolute;
     top: 20px;
-    right: -38px;  /* Cambiado de -40px a -38px (2px más hacia el centro) */
+    right: -38px;
     width: 150px;
     padding: 8px 10px;
     transform: rotate(45deg);
-    transform-origin: center center;  /* Especificado ambos ejes */
+    transform-origin: center center;
     font-size: 11px;
     font-weight: bold;
     color: white;
@@ -181,17 +191,17 @@ body {
     overflow: hidden;
 }
 
-/* Ajustes específicos para cada etiqueta */
+/* Textos CORREGIDOS para que coincidan con HTML */
 .etiqueta-vendido {
     background: linear-gradient(135deg, #FF5722, #E64A19);
     border: 1px solid #D84315;
-    right: -36px;  /* "LO MÁS VENDIDO" necesita menos ajuste (texto más corto) */
+    right: -30px;  /* Ajustado para "Mejor opción" */
 }
 
 .etiqueta-economico {
     background: linear-gradient(135deg, #4CAF50, #388E3C);
     border: 1px solid #2E7D32;
-    right: -40px;  /* "LO MÁS ECONÓMICO" necesita más ajuste (texto más largo) */
+    right: -38px;  /* Ajustado para "Más económico" */
 }
 
 .oferta h3 {
@@ -279,9 +289,16 @@ body {
     font-size: 18px;
 }
 
+/* Contenedor de botones de compra */
+.botones-compra {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
 /* Botón de WhatsApp */
 .whatsapp-btn {
-    display: block;
     background: linear-gradient(90deg, #25D366, #128C7E);
     color: white;
     padding: 18px 40px;
@@ -289,7 +306,6 @@ body {
     text-decoration: none;
     font-weight: 700;
     font-size: 20px;
-    margin-top: 25px;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
@@ -298,17 +314,221 @@ body {
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 }
 
 .whatsapp-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+}
+
+/* Botón de Transfermóvil */
+.transfermovil-btn {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(106, 17, 203, 0.2);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.transfermovil-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(106, 17, 203, 0.3);
     animation: pulse 1s infinite;
 }
 
-.whatsapp-btn i {
-    margin-right: 12px;
+.whatsapp-btn i, .transfermovil-btn i {
     font-size: 24px;
+}
+
+/* Modal para QR */
+.modal-qr {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    animation: modalFadeIn 0.3s ease;
+    overflow-y: auto;
+}
+
+.modal-contenido {
+    background: white;
+    margin: 50px auto;
+    padding: 0;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    animation: modalSlideIn 0.4s ease;
+    position: relative;
+}
+
+.modal-header {
+    background: linear-gradient(90deg, #1a2980, #26d0ce);
+    color: white;
+    padding: 25px;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-cerrar {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal-cerrar:hover {
+    background: rgba(255,255,255,0.3);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-instrucciones {
+    text-align: center;
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.qr-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.qr-opcion {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid #e8e8e8;
+}
+
+.qr-opcion:hover {
+    border-color: #26d0ce;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.qr-opcion h4 {
+    color: #1a2980;
+    margin-bottom: 15px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.qr-imagen {
+    width: 200px;
+    height: 200px;
+    margin: 15px auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.qr-desc {
+    color: #666;
+    font-size: 14px;
+    margin: 10px 0 20px;
+}
+
+/* Botón Pago Realizado en modal */
+.btn-pago-realizado {
+    background: linear-gradient(90deg, #4CAF50, #2E7D32);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-pago-realizado:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+}
+
+.modal-info {
+    background: #f0f8ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border-left: 4px solid #26d0ce;
+}
+
+.modal-info p {
+    color: #1a2980;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-info ol {
+    padding-left: 25px;
+    color: #444;
+}
+
+.modal-info li {
+    margin-bottom: 8px;
+    line-height: 1.5;
 }
 
 /* Sección de testimonios */
@@ -334,6 +554,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
+    margin-bottom: 30px;
 }
 
 .testimonio {
@@ -355,7 +576,7 @@ body {
     line-height: 1.6;
 }
 
-/* ===== TESTIMONIOS CORREGIDOS ===== */
+/* Testimonios */
 .testimonio-autor {
     display: flex;
     align-items: center;
@@ -385,6 +606,19 @@ body {
 
 .estrellas .far.fa-star {
     color: #ddd;
+}
+
+/* Contador de caracteres */
+.contador-caracteres {
+    text-align: right;
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.contador-caracteres span {
+    font-weight: 600;
 }
 
 /* Formulario para nuevas reseñas */
@@ -429,7 +663,7 @@ body {
     resize: vertical;
 }
 
-/* ===== CALIFICACIÓN CORREGIDA ===== */
+/* Calificación */
 .calificacion-resena {
     display: flex;
     align-items: center;
@@ -715,64 +949,82 @@ body {
     scroll-margin-top: 100px;
 }
 
-/* ===== RESPONSIVE CORREGIDO ===== */
+/* Responsive */
 @media (max-width: 768px) {
     body {
         padding-top: 70px;
     }
-    
+
     .nav-container {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .nav-menu {
         justify-content: center;
         gap: 15px;
     }
-    
+
     .nav-link {
         font-size: 14px;
         padding: 6px 12px;
     }
-    
+
     .container {
         border-radius: 15px;
     }
-    
+
     .brand-name {
         font-size: 32px;
     }
-    
+
     .brand-logo-img {
         height: 50px;
     }
-    
+
     .ofertas-container {
         padding: 20px;
     }
-    
+
     .precio {
         font-size: 36px;
     }
-    
+
     .precio-tachado {
         font-size: 16px;
         top: -15px;
     }
-    
+
+    .botones-compra {
+        gap: 12px;
+    }
+
+    .whatsapp-btn, .transfermovil-btn {
+        padding: 15px 25px;
+        font-size: 18px;
+    }
+
     .testimonios-grid {
         grid-template-columns: 1fr;
     }
-    
+
+    .qr-container {
+        grid-template-columns: 1fr;
+    }
+
+    .qr-imagen {
+        width: 180px;
+        height: 180px;
+    }
+
     .pasos {
         grid-template-columns: 1fr;
     }
-    
+
     .tarjetas-contacto {
         grid-template-columns: 1fr;
     }
-    
+
     /* Etiquetas en móvil */
     .etiqueta {
         top: 15px;
@@ -781,15 +1033,36 @@ body {
         padding: 6px 8px;
         font-size: 10px;
     }
-    
+
+    .etiqueta-vendido {
+        right: -28px;
+    }
+
+    .etiqueta-economico {
+        right: -35px;
+    }
+
     /* Calificación en móvil */
     .calificacion-resena {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
     }
-    
+
     .estrellas-calificacion i {
         font-size: 18px;
+    }
+
+    .modal-contenido {
+        margin: 20px auto;
+        width: 95%;
+    }
+
+    .modal-header {
+        padding: 20px;
+    }
+
+    .modal-body {
+        padding: 20px;
     }
 }
