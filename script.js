@@ -124,7 +124,7 @@ function confirmarPago(banco) {
     
     // Crear mensaje específico para pago realizado
     const mensaje = `¡Hola RecargaYa!\n\n` +
-                   `El pago fue realizado a la cuenta ${banco} para el servicio de ${ofertaActual} y espero recibir mi servicio.\n\n` +
+                   `El pago se realizará a la cuenta ${banco} para el servicio de ${ofertaActual} envíame los datos de la tarjeta y número a confirmar.\n\n` +
                    `Saludos.`;
 
     // Codificar para URL
