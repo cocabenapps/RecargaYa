@@ -1,5 +1,5 @@
 // Configuración
-const tuWhatsApp = "5363954759";
+const tuWhatsApp = "5359371917";
 const nombreEmpresa = "RecargaYa";
 
 // Variables globales para el modal QR
