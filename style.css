@@ -1125,4 +1125,70 @@ body {
     .modal-body {
         padding: 20px;
     }
+
+/* Estilos para oferta internacional */
+.etiqueta-internacional {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.beneficios-internacional {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 10px 15px;
+    margin: 15px 0;
+}
+
+.beneficios-internacional ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.beneficios-internacional li {
+    padding: 8px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.beneficios-internacional li:last-child {
+    border-bottom: none;
+}
+
+.beneficios-internacional li i {
+    width: 24px;
+    color: #25d366;
+    font-size: 1rem;
+}
+
+.precio-internacional {
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 10px 0;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .beneficios-internacional li {
+        font-size: 0.8rem;
+        padding: 6px 0;
+    }
+    
+    .precio-internacional {
+        font-size: 1.6rem;
+    }
+}
 }
