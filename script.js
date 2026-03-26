@@ -64,29 +64,49 @@ function actualizarIndicadorHorario() {
     }
 }
 
-// Función mejorada para comprar ofertas (SIN EMOJIS)
+// Función mejorada para comprar ofertas (CON MENSAJE PERSONALIZADO PARA INTERNACIONAL - SIN DATOS DEL CLIENTE)
 function comprarOferta(nombreOferta, precio, codigoOferta) {
-    // Crear mensaje sin emojis, solo con puntos/plecas
-    const mensaje = `Hola RecargaYa!\n\n` +
-                   `Estoy interesado en adquirir la siguiente oferta:\n\n` +
-                   `----------------------------------------\n` +
-                   `OFERTA: ${nombreOferta}\n` +
-                   `PRECIO: ${precio}\n` +
-                   `CODIGO: ${codigoOferta}\n` +
-                   `----------------------------------------\n\n` +
-                   `Por favor, envienme los datos para realizar el pago.\n` +
-                   `(Número de tarjeta y número a confirmar pago)\n\n` +
-                   `Saludos.`;
-
+    let mensaje = "";
+    
+    // Detectar si es la oferta internacional (por el código o por el nombre)
+    if (codigoOferta === "INT-X5-33USD" || nombreOferta.includes("Internacional")) {
+        // Mensaje PERSONALIZADO para Recarga Internacional x5
+        mensaje = `🌍 *SOLICITUD DE RECARGA INTERNACIONAL X5* 🌍\n\n` +
+                  `Hola, estoy interesado en la siguiente oferta:\n\n` +
+                  `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+                  `📦 *OFERTA:* ${nombreOferta}\n` +
+                  `💰 *PRECIO:* ${precio}\n` +
+                  `📋 *CÓDIGO:* ${codigoOferta}\n` +
+                  `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                  `✨ *BENEFICIOS INCLUIDOS:*\n` +
+                  `✅ 3000 CUP de saldo móvil en Cuba\n` +
+                  `✅ +40 minutos de llamada\n` +
+                  `✅ +200 SMS válidos por 30 días\n\n` +
+                  `Por favor, envíenme los datos para realizar el pago en USD.\n\n` +
+                  `Gracias.`;
+    } else {
+        // Mensaje para ofertas nacionales (CUP)
+        mensaje = `Hola RecargaYa!\n\n` +
+                  `Estoy interesado en adquirir la siguiente oferta:\n\n` +
+                  `----------------------------------------\n` +
+                  `OFERTA: ${nombreOferta}\n` +
+                  `PRECIO: ${precio}\n` +
+                  `CODIGO: ${codigoOferta}\n` +
+                  `----------------------------------------\n\n` +
+                  `Por favor, envíenme los datos para realizar el pago.\n` +
+                  `(Número de tarjeta y número a confirmar pago)\n\n` +
+                  `Saludos.`;
+    }
+    
     // Codificar para URL
     const mensajeCodificado = encodeURIComponent(mensaje);
-
+    
     // Crear enlace de WhatsApp
     const whatsappURL = `https://wa.me/${tuWhatsApp}?text=${mensajeCodificado}`;
-
+    
     // Abrir en nueva pestaña
     window.open(whatsappURL, '_blank');
-
+    
     // Mostrar confirmación
     mostrarConfirmacion(nombreOferta, 'whatsapp');
 }
